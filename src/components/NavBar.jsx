@@ -7,13 +7,13 @@ const NavBar = () => {
     { id: 1, link: "home" },
     { id: 2, link: "about" },
     { id: 3, link: "portfolio" },
-    { id: 4, link: "experience" },
+    { id: 4, link: "skills" },
     { id: 5, link: "contact" },
   ];
 
   return (
     <div className="px-4 bg-black w-full h-20 flex justify-between items-center fixed text-white">
-      <div className="ml-2 font-signature text-5xl text-white">Senjeev</div>
+      <div className="ml-2 font-signature text-5xl text-white">Senjeev Ganesan</div>
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex">
