@@ -1,79 +1,143 @@
 import React from "react";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import p1 from "../assets/Portfolio/p1.jpg";
-import p2 from "../assets/Portfolio/p2.jfif";
-import p3 from "../assets/Portfolio/p3.jpg";
+import logo from "../assets/Portfolio/logo.jpg";
 import p4 from "../assets/Portfolio/p4.png";
 import p5 from "../assets/Portfolio/p5.png";
+import pingup from "../assets/Portfolio/pingup.jpg";
+
 const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      src: p1,
-      name: "Expense-Tracker",
-      link: "https://github.com/Senjeev/Expense_Tracker",
+      name: "PingUp",
+      src: pingup, 
+      description:
+        "A real-time chat application featuring seamless messaging, presence indicators, and secure JWT authentication. Includes image sharing and automated email notifications.",
+      tech: ["React.js", "Node.js","Zustand","Arcjet", "Socket", "MongoDB", "Tailwind","Cloudinary","Resend"],
+      code: "https://github.com/Senjeev/PingUp---MERN", 
+      // demo: "https://pingup-live-demo-link.com", // Add your real link here
     },
     {
       id: 2,
-      src: p2,
-      name: "E-Sevai(Clone)",
-      link: "https://github.com/Senjeev/E-SEVAI-CLONE-",
+      name: "Pair Programming Platform",
+      src: logo, // Placeholder image
+      description:
+        "A collaborative coding environment enabling real-time code synchronization between users. Built for efficient peer programming sessions with low latency.",
+      tech: ["Python", "FastAPI", "WebSockets", "React.js"],
+      code: "https://github.com/Senjeev/pair-programmer",
+      demo: "https://pair-programmer-lake.vercel.app/"
     },
+
     {
       id: 3,
-      src: p3,
-      name: "To-Do",
+      name: "PostRest (Social App)",
+      src: p5,
+      description:
+        "A social media platform enabling users to create posts, manage connections, and interact via likes and comments. Features a robust backend API.",
+      tech: ["React", "Material UI", "Redux", "Node.js","Express.js", "MongoDB"],
+      code: "https://github.com/Senjeev/POST_REST",
     },
     {
       id: 4,
+      name: "IMDB Clone",
       src: p4,
-      name: "IMDB-Clone",
-      link: "https://github.com/Senjeev/clone-IMDB",
+      description:
+        "A movie database interface allowing users to browse movies, view ratings, and search for their favorite titles using the TMDB API.",
+      tech: ["React.js", "TMDB API", "TailWindCSS"],
+      code: "https://github.com/Senjeev/clone-IMDB",
     },
-    {
+        {
       id: 5,
-      src: p5,
-      name: "POST_REST",
-      link: "https://github.com/Senjeev/POST_REST",
-    },
+      name: "Expense Tracker",
+      src: p1,
+      description:
+        "A full-stack financial management tool to track income and expenses. Visualizes spending habits with dynamic charts and transaction history.",
+      tech: ["MERN Stack", "Chart.js", "Redux"],
+      code: "https://github.com/Senjeev/Expense_Tracker",
+    }
   ];
+
   return (
     <div
-      name="portfolio"
-      className="w-full bg-gradient-to-b from-black to-gray-800 text-white md:h-screen"
+      name="projects"
+      // Added pt-28 to clear the fixed navbar
+      className="w-full h-auto min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white pt-28 pb-10"
     >
-      <div className="h-full w-full max-w-screen-lg p-4 mx-auto flex flex-col justify-center">
-        <div className="mt-16">
-          <p className="text-4xl font-bold inline border-b-4 border-gray-500">
-            Portfolio
+      <div className="max-w-screen-2xl p-4 md:px-16 mx-auto flex flex-col justify-center w-full h-full">
+        
+        {/* Header */}
+        <div className="pb-12">
+          <h2 className="text-4xl sm:text-5xl font-bold inline-block relative z-10">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white">
+              Projects
+            </span>
+            <span className="absolute bottom-1 left-0 w-full h-3 bg-cyan-500/20 -z-10 -skew-x-12 rounded-sm"></span>
+          </h2>
+          <p className="text-gray-400 mt-6 text-lg sm:text-xl font-light max-w-2xl leading-relaxed">
+            Check out some of my recent work, ranging from real-time apps to full-stack platforms.
           </p>
-          <p className="py-6">Here are some of my works...</p>
         </div>
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0">
-          {projects.map((proj) => (
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {projects.map(({ id, name, src, description, tech, code, demo }) => (
             <div
-              key={proj.id}
-              className="shadow-md shadow-gray-600 rounded-lg w-fit"
+              key={id}
+              className="bg-gray-900/40 backdrop-blur-md border border-gray-700 rounded-2xl p-6 hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-500/50 duration-300 flex flex-col h-full group"
             >
-              <img
-                src={proj.src}
-                alt=" "
-                style={{ width: "200px", height: "180px" }}
-                className="rounded-md duration-200 hover:scale-105"
-              ></img>
-              <div className=" border-b-2">
-                <p className="text-center hover:scale-105 duration-300 py-2 ">
-                  {proj.name}
-                </p>
+              {/* Top Section: Logo + Title */}
+              <div className="flex items-center gap-4 mb-4">
+                <img
+                  src={src}
+                  alt={name}
+                  className="w-16 h-16 rounded-lg object-cover shadow-md group-hover:scale-105 duration-300"
+                />
+                <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 duration-300">
+                  {name}
+                </h3>
               </div>
-              <div className=" flex items-center justify-center hover:bg-slate-400  ">
-                <button
-                  onClick={proj.link}
-                  className="w-1/2  m-2 duration-200 hover:scale-105 hover:text-black"
+
+              {/* Description */}
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                {description}
+              </p>
+
+              {/* Tech Stack Badges */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {tech.map((item, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 text-xs font-medium bg-gray-800 text-cyan-400 rounded-full border border-gray-700"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              {/* Buttons (Code & Live Demo) */}
+              <div className="flex items-center gap-4 mt-auto">
+                {/* Code Button */}
+                <a
+                  href={code}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 border border-gray-600 hover:border-white transition-all duration-200 text-sm font-semibold"
                 >
-                  <a href={proj.link} target="_blank">
-                    Code{" "}
+                  <FaGithub size={18} /> Code
+                </a>
+
+                {/* Live Demo Button (Only for PingUp) */}
+                {demo && (
+                  <a
+                    href={demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all duration-200 text-sm font-semibold"
+                  >
+                    <FaExternalLinkAlt size={16} /> Live Demo
                   </a>
-                </button>
+                )}
               </div>
             </div>
           ))}
